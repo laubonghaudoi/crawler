@@ -1,32 +1,32 @@
 import argparse
 
 from Crawler_orgs import Crawler_orgs
-from Crawler_identity import Crawler_identity
-
+from Crawler_fake import Crawler_fake
+from Crawler_paysa import Crawler_paysa
+'''
 parser = argparse.ArgumentParser(description='Crawler')
-
 parser.add_argument('-file', type=int, default=1)
 
 args = parser.parse_args()
 
 
-identity_crawler = Crawler_identity(IN_SAMSUNG=True)
-
 #orgs_crawler = Crawler_orgs(IN_SAMSUNG=True)
 
-# I have crawled all the org codes, so the codes below might be obsolete 
-#links = orgs_crawler.read_lines('all_area_pages.txt')
-#orgs_crawler.crawl_org_codes(links, 'all_org_codes.txt')
+# I have crawled all the org codes, so you don't have to run the codes below again 
+links = orgs_crawler.read_lines('all_area_pages.txt')
+orgs_crawler.crawl_org_codes(links, 'all_org_codes.txt')
 
-# Read org codes to crawl directly from their main pages
-#codes = orgs_crawler.read_lines('./not_first_codes/56.txt')
+# Read org codes to crawl directly from their main pages, file name should be changed
+codes = orgs_crawler.read_lines('./not_first_codes/56.txt')
 
-# Uncomment the following lines to crawl org postals and places
-#orgs_crawler.crawl_orgs_postals(codes, 'post56.txt')
+# Crawl org postals and places from the c
+orgs_crawler.crawl_orgs_postals(codes, 'post56.txt')
 
 # Uncomment the following lines to crawl org infos
-#orgs_crawler.crawl_orgs_infos(codes, "info_56.txt")
-num = args.file
+orgs_crawler.crawl_orgs_infos(codes, "info_56.txt")
 
-#identity_crawler.crawl_identity('name_add{}.txt'.format(num), 'com{}.txt'.format(num), 'title{}.txt'.format(num), 10)
-identity_crawler.crawl_com('com.txt{}'.format(num), 'title{}.txt'.format(num), 100)
+num = args.file
+'''
+c = Crawler_paysa(True)
+c.crawl_company('paysacom.txt')
+c.crawl_title('paysatitle.txt')

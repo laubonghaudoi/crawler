@@ -1,24 +1,24 @@
 from Crawler import Crawler
 
-class Crawler_identity(Crawler):
+class Crawler_fake(Crawler):
     '''
     Crawl generated English info
     '''
     def __init__(self, IN_SAMSUNG):
         super().__init__(IN_SAMSUNG)
 
-        self.identity_url = "http://www.fakenamegenerator.com/"
+        self.fake_url = "http://www.fakenamegenerator.com/"
         self.com_url = "http://www.fakepersongenerator.com/employment-generator"
 
-    def crawl_identity(self, name_address_path, company_path, title_path, num):
+    def crawl_fake(self, name_address_path, company_path, title_path, num):
         name_address_file = open(name_address_path, 'w', encoding='utf-8')
         company_file = open(company_path, 'w', encoding='utf-8')
         title_file = open(title_path, 'w', encoding='utf-8')
 
         for i in range(num):
             if i % 1000 == 0:
-                print("Crawling identity {}".format(i))
-            soup = self._get_soup(self.identity_url)
+                print("Crawling generated fake identites {}".format(i))
+            soup = self._get_soup(self.fake_url)
             
             try:
                 dd = soup.find_all('dd')
@@ -44,7 +44,7 @@ class Crawler_identity(Crawler):
 
         for i in range(num):
             if i % 1000 == 0:
-                print("Crawling identity {}".format(i))
+                print("Crawling generated fake company {}".format(i))
 
             soup = self._get_soup(self.com_url)
 
